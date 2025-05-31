@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="edu_comp.HistorialPage"
+             Title="Historial"
+             Padding="10">
+
+    <VerticalStackLayout Spacing="10">
+
+        <!-- Tabla equivalente a DataGridView -->
+        <CollectionView x:Name="cvHistorial"  
+                        SelectionMode="Single"
+                        HeightRequest="350"
+                        ItemsSource="{Binding HistorialItems}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" Padding="10" Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Fecha, StringFormat='{0:g}'}" 
+                                   FontAttributes="Bold" />
+                            <Label Text="{Binding Consulta}" LineBreakMode="WordWrap" />
+                            <Label Text="{Binding Respuesta}" LineBreakMode="WordWrap" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center">
+            <Button Text="Ver detalles" Clicked="btnVerDetalle_Click" />
+            <Button Text="Cerrar" Clicked="btnCerrar_Click" />
+        </HorizontalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
